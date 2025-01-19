@@ -52,6 +52,9 @@ def pregunta_01():
     try:
         df = pd.read_csv("files/input/news.csv", index_col=0)
     except FileNotFoundError:
+        print("El archivo 'files/input/news.csv' no existe")
+        return
+    except Exception as e:
         print("Error al cargar el archivo csv: {e}")
         return
     
@@ -62,7 +65,7 @@ def pregunta_01():
             color=colors[col],
             label=col, 
             zorder=zorder[col], 
-            linewidths=linewidths[col]
+            linewidth=linewidths[col]
         )
 
     plt.title("How people get their news", fontsize = 16)
